@@ -101,7 +101,7 @@ def Amar(gsiRNA, psiRNA):
 
 maxres = 0
 DNA = ''
-with open (r'C:\Users\glip5\Downloads\sequence1.fasta')  as file_in:
+with open (input('Path to .fasta file on your computer with DNA: '))  as file_in:
     for line in file_in:
         if line.startswith('>'):
             continue
@@ -135,9 +135,9 @@ for i in range(2, len(mRNA)-20):
         l_siRNA_guide = []
         l_siRNA_passenger = []
         maxres = res
-        a = i+1
-        b = i+21
-        mRNA_site = mRNA[i:i+21]
+        a = i-1
+        b = i+19
+        mRNA_site = mRNA[i-2:i+19]
         siRNA_guide = gsiRNA
         siRNA_passenger = psiRNA
         efficacy = res/18*100
@@ -148,9 +148,9 @@ for i in range(2, len(mRNA)-20):
         l_siRNA_passenger.append(siRNA_passenger)             
     elif res == maxres:
         maxres = res
-        a = i+1
-        b = i+21
-        mRNA_site = mRNA[i:i+21]
+        a = i-1
+        b = i+19
+        mRNA_site = mRNA[i-2:i+19]
         siRNA_guide = gsiRNA
         siRNA_passenger = psiRNA
         efficacy = res/18*100
@@ -159,7 +159,7 @@ for i in range(2, len(mRNA)-20):
         l_mRNA_site.append(mRNA_site)
         l_siRNA_guide.append(siRNA_guide)
         l_siRNA_passenger.append(siRNA_passenger)    
-with open (r'C:\Users\glip5\Desktop\output.txt', 'w') as file_out:
+with open (input('Path to .txt file on your computer for output: '), 'w') as file_out:
     for i in range(len(l_a)):
         file_out.write(f"mRNA_site [{l_a[i]}, {l_b[i]}] (5'->3'):")       
         file_out.write('\n')
